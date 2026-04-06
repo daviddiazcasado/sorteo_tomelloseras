@@ -302,4 +302,88 @@ const destinations = [
   // 5 Ciudades baratas en septiembre
   { name: "Varsovia", flag: "🇵🇱", image: "https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&w=800", desc: "Moderna, barata y con un casco antiguo precioso. ¡Sorpresa garantizada!" },
   { name: "Praga", flag: "🇨🇿", image: "https://images.unsplash.com/photo-1513807016779-d51c0c026263?auto=format&fit=crop&w=800", desc: "La ciudad de las cien torres. Cerveza excelente y precios muy económicos." },
-  { name: "Oporto", flag: "🇵🇹", image: "https://images
+  { name: "Oporto", flag: "🇵🇹", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800", desc: "Vistas al Duero, azulejos azules y vino de Oporto. ¡Pura esencia lusa!" },
+  { name: "Milán", flag: "🇮🇹", image: "https://images.unsplash.com/photo-1520986606214-8b456906c813?auto=format&fit=crop&w=800", desc: "Moda, el Duomo y aperitivos italianos. Vuelos muy competitivos en septiembre." },
+  { name: "Bruselas", flag: "🇧🇪", image: "https://images.unsplash.com/photo-1559113513-d5e09c78b9dd?auto=format&fit=crop&w=800", desc: "Gofres, chocolate y la Grand Place. Un destino fácil y divertido para el grupo." }
+];
+
+function init() {
+  const container = document.getElementById('chipsContainer');
+  destinations.forEach(d => {
+    const span = document.createElement('span');
+    span.className = 'dest-chip';
+    span.textContent = d.name;
+    container.appendChild(span);
+  });
+
+  const planeContainer = document.getElementById('planes');
+  for (let i = 0; i < 10; i++) {
+    const el = document.createElement('div');
+    el.className = 'plane-icon';
+    el.textContent = '✈️';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (10 + Math.random() * 15) + 's';
+    el.style.animationDelay = (Math.random() * 10) + 's';
+    planeContainer.appendChild(el);
+  }
+}
+
+let countdownTimer = null;
+let currentCount = 5;
+let selectedDest = null;
+
+function startCountdown() {
+  document.getElementById('btnSorteo').style.display = 'none';
+  document.getElementById('chipsContainer').style.display = 'none';
+  document.getElementById('countdownWrap').classList.add('active');
+
+  selectedDest = destinations[Math.floor(Math.random() * destinations.length)];
+  currentCount = 5;
+  updateCountdown();
+  animateChips();
+
+  countdownTimer = setInterval(() => {
+    currentCount--;
+    updateCountdown();
+    if (currentCount <= 0) {
+      clearInterval(countdownTimer);
+      showResult();
+    }
+  }, 1000);
+}
+
+function updateCountdown() {
+  document.getElementById('countdownNum').textContent = currentCount;
+  document.getElementById('progressFill').style.width = ((currentCount / 5) * 100) + '%';
+}
+
+function animateChips() {
+  const chips = document.querySelectorAll('.dest-chip');
+  let idx = 0;
+  const chipInterval = setInterval(() => {
+    if (currentCount <= 0) { clearInterval(chipInterval); return; }
+    chips.forEach(c => c.classList.remove('highlight'));
+    chips[idx % chips.length].classList.add('highlight');
+    idx++;
+  }, 150);
+}
+
+function showResult() {
+  document.getElementById('countdownWrap').classList.remove('active');
+  document.getElementById('cityImg').src = selectedDest.image;
+  document.getElementById('cityFlag').textContent = selectedDest.flag;
+  document.getElementById('cityName').textContent = selectedDest.name;
+  document.getElementById('cityDesc').textContent = selectedDest.desc;
+  document.getElementById('resultWrap').classList.add('active');
+}
+
+function reset() {
+  document.getElementById('resultWrap').classList.remove('active');
+  document.getElementById('chipsContainer').style.display = 'flex';
+  document.getElementById('btnSorteo').style.display = 'block';
+}
+
+init();
+</script>
+</body>
+</html>
