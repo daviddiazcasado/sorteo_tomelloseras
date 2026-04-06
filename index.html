@@ -3,28 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Sorteo Navideño de Destinos</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>✈️ ¡Nuestro Viaje de Chicas! - Septiembre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF7F2;
-    --warm-white: #FFF9F0;
-    --gold: #C9963A;
-    --gold-light: #E8C478;
-    --red: #B83232;
-    --red-light: #D4504A;
-    --green: #2D6A4F;
-    --green-light: #52B788;
-    --text-dark: #1A1A2E;
-    --text-mid: #4A4A6A;
-    --shadow: rgba(30, 20, 10, 0.12);
+    --bg-light: #F0F4F8;
+    --accent-blue: #0077B6;
+    --accent-teal: #48CAE4;
+    --coral: #FF7043;
+    --sand: #F4E1D2;
+    --text-dark: #2D3436;
+    --text-mid: #636E72;
+    --white: #FFFFFF;
+    --shadow: rgba(0, 119, 182, 0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Lato', sans-serif;
-    background: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-light);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -33,233 +31,171 @@
     position: relative;
   }
 
-  /* Fondo decorativo */
+  /* Fondo decorativo (Efecto cielo/viaje) */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 15% 20%, rgba(201,150,58,0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 80%, rgba(45,106,79,0.10) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(184,50,50,0.06) 0%, transparent 70%);
-    pointer-events: none;
+    background: 
+      radial-gradient(circle at 10% 10%, rgba(72, 202, 228, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 90%, rgba(255, 112, 67, 0.1) 0%, transparent 40%);
+    z-index: -1;
   }
 
-  /* Copos de nieve */
-  .snowflakes {
+  /* Aviones de papel flotando */
+  .floating-icons {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    overflow: hidden;
     z-index: 0;
   }
 
-  .snowflake {
+  .plane-icon {
     position: absolute;
-    top: -20px;
-    color: rgba(201,150,58,0.25);
-    font-size: 1.2em;
-    animation: fall linear infinite;
-    user-select: none;
+    opacity: 0.2;
+    font-size: 1.5rem;
+    animation: drift linear infinite;
   }
 
-  @keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  @keyframes drift {
+    from { transform: translate(-10vw, 110vh) rotate(45deg); }
+    to { transform: translate(110vw, -10vh) rotate(45deg); }
   }
 
   /* Contenedor principal */
   .container {
     position: relative;
     z-index: 10;
-    width: min(420px, 92vw);
+    width: min(440px, 92vw);
     text-align: center;
   }
 
   /* Header */
   .header {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     animation: fadeDown 0.8s ease both;
   }
 
   .header .eyebrow {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent-blue);
     margin-bottom: 8px;
   }
 
   .header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
+    font-size: 2.4rem;
     color: var(--text-dark);
-    line-height: 1.1;
-    margin-bottom: 6px;
+    line-height: 1.2;
   }
 
   .header h1 span {
-    color: var(--red);
+    color: var(--coral);
     font-style: italic;
-  }
-
-  .header p {
-    font-size: 0.85rem;
-    color: var(--text-mid);
-    font-weight: 300;
-    letter-spacing: 0.03em;
   }
 
   /* Tarjeta principal */
   .card {
-    background: rgba(255, 253, 248, 0.85);
-    backdrop-filter: blur(20px);
-    border-radius: 28px;
-    padding: 40px 32px;
-    box-shadow:
-      0 4px 24px var(--shadow),
-      0 1px 0 rgba(255,255,255,0.9) inset;
-    border: 1px solid rgba(201,150,58,0.18);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    padding: 40px 28px;
+    box-shadow: 0 15px 35px var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     animation: fadeUp 0.8s ease 0.2s both;
-    position: relative;
-    overflow: hidden;
   }
 
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
-    border-radius: 28px 28px 0 0;
-  }
-
-  /* Icono decorativo */
+  /* Icono Avión */
   .icon-wrap {
-    width: 72px;
-    height: 72px;
-    background: linear-gradient(135deg, var(--red) 0%, var(--gold) 100%);
-    border-radius: 22px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 24px;
-    font-size: 2rem;
-    box-shadow: 0 8px 20px rgba(184,50,50,0.25);
-    transform: rotate(-4deg);
-    transition: transform 0.3s ease;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 119, 182, 0.3);
   }
 
-  .card:hover .icon-wrap { transform: rotate(0deg) scale(1.05); }
-
-  /* Destinos lista */
+  /* Chips de Destino */
   .destinations-hint {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     justify-content: center;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
 
   .dest-chip {
-    background: rgba(201,150,58,0.1);
-    border: 1px solid rgba(201,150,58,0.25);
+    background: var(--bg-light);
+    padding: 6px 14px;
     border-radius: 100px;
-    padding: 4px 12px;
-    font-size: 0.7rem;
-    font-weight: 400;
+    font-size: 0.75rem;
     color: var(--text-mid);
-    letter-spacing: 0.02em;
+    border: 1px solid #E2E8F0;
     transition: all 0.3s ease;
   }
 
   .dest-chip.highlight {
-    background: var(--gold);
+    background: var(--accent-blue);
     color: white;
-    border-color: var(--gold);
-    transform: scale(1.08);
+    transform: scale(1.1);
+    border-color: var(--accent-blue);
   }
 
   /* Botón */
   .btn-sorteo {
     width: 100%;
-    padding: 18px 24px;
-    background: linear-gradient(135deg, var(--red) 0%, #9B2222 100%);
+    padding: 20px;
+    background: var(--text-dark);
     color: white;
     border: none;
-    border-radius: 16px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    border-radius: 18px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(184,50,50,0.35);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
   }
-
-  .btn-sorteo::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .btn-sorteo:hover::before { left: 100%; }
 
   .btn-sorteo:hover {
+    background: var(--accent-blue);
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(184,50,50,0.4);
   }
-
-  .btn-sorteo:active { transform: translateY(0); }
-  .btn-sorteo:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
   /* Countdown */
   .countdown-wrap {
     display: none;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 0;
+    gap: 15px;
   }
 
   .countdown-wrap.active { display: flex; }
 
   .countdown-num {
+    font-size: 4rem;
     font-family: 'Playfair Display', serif;
-    font-size: 5rem;
+    color: var(--accent-blue);
     font-weight: 700;
-    color: var(--red);
-    line-height: 1;
-    animation: pulse 1s ease infinite;
-  }
-
-  .countdown-text {
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    font-weight: 300;
   }
 
   .progress-bar {
     width: 100%;
-    height: 4px;
-    background: rgba(201,150,58,0.15);
-    border-radius: 100px;
+    height: 6px;
+    background: #E2E8F0;
+    border-radius: 10px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--red), var(--gold));
-    border-radius: 100px;
+    background: var(--accent-teal);
     width: 100%;
     transition: width 1s linear;
   }
@@ -267,310 +203,103 @@
   /* Resultado */
   .result-wrap {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    animation: revealResult 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67) both;
   }
 
-  .result-wrap.active { display: flex; animation: revealResult 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
+  .result-wrap.active { display: block; }
 
   .city-image {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px var(--shadow);
+    border-radius: 20px;
+    margin-bottom: 15px;
   }
 
   .city-name {
     font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    font-weight: 700;
+    font-size: 2.2rem;
     color: var(--text-dark);
-    line-height: 1;
-  }
-
-  .city-flag {
-    font-size: 1.8rem;
+    margin-bottom: 10px;
   }
 
   .city-desc {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-mid);
-    line-height: 1.65;
-    font-weight: 300;
-    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
 
   .btn-repeat {
-    width: 100%;
-    padding: 14px 24px;
-    background: transparent;
-    color: var(--red);
-    border: 1.5px solid var(--red);
-    border-radius: 14px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    background: none;
+    border: 2px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 12px 25px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
   }
 
   .btn-repeat:hover {
-    background: var(--red);
+    background: var(--accent-blue);
     color: white;
-    transform: translateY(-1px);
   }
 
-  /* Footer */
-  .footer {
-    margin-top: 20px;
-    font-size: 0.7rem;
-    color: rgba(74,74,106,0.5);
-    letter-spacing: 0.05em;
-    animation: fadeUp 0.8s ease 0.4s both;
-  }
+  /* Animaciones */
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes revealResult { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-  /* Confetti */
-  .confetti-piece {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
-    pointer-events: none;
-    z-index: 100;
-    animation: confettiFall 2.5s ease-in forwards;
-  }
-
-  @keyframes confettiFall {
-    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-  }
-
-  @keyframes revealResult {
-    from { opacity: 0; transform: scale(0.85) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
 </style>
 </head>
 <body>
 
-<div class="snowflakes" id="snowflakes"></div>
+<div class="floating-icons" id="planes"></div>
 
 <div class="container">
   <div class="header">
-    <div class="eyebrow">🎄 Navidad 2026</div>
-    <h1>¿A dónde <span>viajas</span><br>estas fiestas?</h1>
-    <p>Deja que el destino decida por ti</p>
+    <div class="eyebrow">📍 Septiembre 2026</div>
+    <h1>¿A dónde nos vamos <span>chicas</span>?</h1>
   </div>
 
   <div class="card">
-    <div class="icon-wrap">🎁</div>
+    <div class="icon-wrap">✈️</div>
 
     <div class="destinations-hint" id="chipsContainer">
-      <span class="dest-chip">Colmar</span>
-      <span class="dest-chip">Copenhague</span>
-      <span class="dest-chip">Edimburgo</span>
-      <span class="dest-chip">New York</span>
-      <span class="dest-chip">Hurghada</span>
-      <span class="dest-chip">Selva Negra</span>
-      <span class="dest-chip">Tenerife</span>
-      <span class="dest-chip">Gdansk</span>
-    </div>
+      </div>
 
     <button class="btn-sorteo" id="btnSorteo" onclick="startCountdown()">
-      🎲 &nbsp;Revelar mi destino
+      🌏 Reservar Destino al Azar
     </button>
 
     <div class="countdown-wrap" id="countdownWrap">
-      <div class="countdown-text">Tu destino se revela en...</div>
+      <div style="font-size: 0.8rem; color: var(--text-mid);">BUSCANDO VUELOS...</div>
       <div class="countdown-num" id="countdownNum">5</div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
     <div class="result-wrap" id="resultWrap">
       <img class="city-image" id="cityImg" src="" alt="">
-      <div class="city-flag" id="cityFlag"></div>
+      <div id="cityFlag" style="font-size: 2rem;"></div>
       <div class="city-name" id="cityName"></div>
       <div class="city-desc" id="cityDesc"></div>
-      <button class="btn-repeat" onclick="reset()">↻ &nbsp;Volver a sortear</button>
+      <button class="btn-repeat" onclick="reset()">↻ Probar otra vez</button>
     </div>
   </div>
-
-  <div class="footer">✦ Sorteo navideño de destinos ✦</div>
 </div>
 
 <script>
 const destinations = [
-  {
-    name: "Colmar",
-    flag: "🇫🇷",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Colmar_-_Petite_Venise_-_Panorama.jpg/1280px-Colmar_-_Petite_Venise_-_Panorama.jpg",
-    desc: "La joya de Alsacia, con sus casas de entramado de madera, canales encantadores y el mercado de Navidad más bonito de Europa. Una postal de cuento en diciembre."
-  },
-  {
-    name: "Copenhague",
-    flag: "🇩🇰",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Copenhagen_-_Nyhavn_%28Unsplash%29.jpg/1280px-Copenhagen_-_Nyhavn_%28Unsplash%29.jpg",
-    desc: "La ciudad del hygge navideño. Sus canales de Nyhavn iluminados, el parque Tivoli con sus luces mágicas y la calidez danesa hacen de ella un destino de ensueño."
-  },
-  {
-    name: "Edimburgo",
-    flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Edinburgh_castle_from_the_national_war_museum_of_scotland.jpg/1280px-Edinburgh_castle_from_the_national_war_museum_of_scotland.jpg",
-    desc: "El castillo envuelto en niebla, las calles medievales del casco antiguo y el mercado navideño bajo la roca volcánica. Edimburgo en invierno es pura magia escocesa."
-  },
-  {
-    name: "Nueva York",
-    flag: "🇺🇸",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Southwest_corner_of_Central_Park%2C_looking_east%2C_NYC.jpg/1280px-Southwest_corner_of_Central_Park%2C_looking_east%2C_NYC.jpg",
-    desc: "El árbol del Rockefeller Center, los escaparates de la Quinta Avenida, Central Park nevado… Nueva York en Navidad es exactamente como la imaginas, y aún mejor."
-  },
-  {
-    name: "Hurghada",
-    flag: "🇪🇬",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Hurghada_beach.jpg/1280px-Hurghada_beach.jpg",
-    desc: "Para los que prefieren escapar del frío. Mar Rojo cristalino, sol garantizado, arrecifes de coral únicos y un ambiente relajado bajo 25°C en plenas fiestas navideñas."
-  },
-  {
-    name: "Selva Negra",
-    flag: "🇩🇪",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Triberg_Waterfall_Black_Forest.jpg/1280px-Triberg_Waterfall_Black_Forest.jpg",
-    desc: "Abetos cargados de nieve, aldeas de cuento, relojes de cuco y pasteles de cereza. La Selva Negra alemana es el escenario perfecto para una Navidad de libro de cuentos."
-  },
-  {
-    name: "Tenerife",
-    flag: "🇪🇸",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Teide_y_el_Valle_de_la_Orotava.jpg/1280px-Teide_y_el_Valle_de_la_Orotava.jpg",
-    desc: "La isla del eterno verano. El Teide nevado, las playas doradas, el Carnaval a la vuelta de la esquina y el sol canario hacen de Tenerife el paraíso invernal español."
-  },
-  {
-    name: "Gdansk",
-    flag: "🇵🇱",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gda%C5%84sk_Old_Town_with_Motlawa_River.jpg/1280px-Gda%C5%84sk_Old_Town_with_Motlawa_River.jpg",
-    desc: "Perla del Báltico con su casco antiguo hanseático de fachadas coloridas a orillas del río Motława. En Navidad, sus mercadillos medievales, el ámbar en cada escaparate y la nieve sobre los tejados crean una atmósfera única en el norte de Polonia."
-  }
-];
-
-let countdownTimer = null;
-let currentCount = 5;
-let selectedDest = null;
-
-function createSnowflakes() {
-  const container = document.getElementById('snowflakes');
-  const symbols = ['❄', '❅', '❆', '✦'];
-  for (let i = 0; i < 18; i++) {
-    const el = document.createElement('div');
-    el.className = 'snowflake';
-    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.left = Math.random() * 100 + 'vw';
-    el.style.fontSize = (0.8 + Math.random() * 1.2) + 'em';
-    el.style.animationDuration = (6 + Math.random() * 10) + 's';
-    el.style.animationDelay = (Math.random() * 10) + 's';
-    container.appendChild(el);
-  }
-}
-
-function startCountdown() {
-  document.getElementById('btnSorteo').disabled = true;
-  document.getElementById('btnSorteo').style.display = 'none';
-  document.getElementById('chipsContainer').style.display = 'none';
-  document.getElementById('countdownWrap').classList.add('active');
-
-  selectedDest = destinations[Math.floor(Math.random() * destinations.length)];
-  currentCount = 5;
-  updateCountdown();
-
-  // Highlight chips during countdown
-  animateChips();
-
-  countdownTimer = setInterval(() => {
-    currentCount--;
-    updateCountdown();
-    if (currentCount <= 0) {
-      clearInterval(countdownTimer);
-      showResult();
-    }
-  }, 1000);
-}
-
-function updateCountdown() {
-  document.getElementById('countdownNum').textContent = currentCount;
-  document.getElementById('progressFill').style.width = ((currentCount / 5) * 100) + '%';
-}
-
-let chipInterval = null;
-function animateChips() {
-  const chips = document.querySelectorAll('.dest-chip');
-  let idx = 0;
-  chipInterval = setInterval(() => {
-    chips.forEach(c => c.classList.remove('highlight'));
-    chips[idx % chips.length].classList.add('highlight');
-    idx++;
-  }, 200);
-}
-
-function showResult() {
-  clearInterval(chipInterval);
-  document.getElementById('countdownWrap').classList.remove('active');
-
-  const dest = selectedDest;
-  document.getElementById('cityImg').src = dest.image;
-  document.getElementById('cityImg').alt = dest.name;
-  document.getElementById('cityFlag').textContent = dest.flag;
-  document.getElementById('cityName').textContent = dest.name;
-  document.getElementById('cityDesc').textContent = dest.desc;
-
-  document.getElementById('resultWrap').classList.add('active');
-  launchConfetti();
-}
-
-function reset() {
-  document.getElementById('resultWrap').classList.remove('active');
-  document.getElementById('chipsContainer').style.display = 'flex';
-  document.getElementById('btnSorteo').style.display = 'block';
-  document.getElementById('btnSorteo').disabled = false;
-  document.querySelectorAll('.dest-chip').forEach(c => c.classList.remove('highlight'));
-}
-
-function launchConfetti() {
-  const colors = ['#B83232', '#C9963A', '#2D6A4F', '#E8C478', '#D4504A', '#52B788'];
-  for (let i = 0; i < 60; i++) {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.className = 'confetti-piece';
-      el.style.left = (20 + Math.random() * 60) + 'vw';
-      el.style.top = '-10px';
-      el.style.background = colors[Math.floor(Math.random() * colors.length)];
-      el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-      el.style.width = (6 + Math.random() * 8) + 'px';
-      el.style.height = el.style.width;
-      el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-      el.style.animationDelay = (Math.random() * 0.5) + 's';
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 3500);
-    }, i * 30);
-  }
-}
-
-createSnowflakes();
-</script>
-</body>
-</html>
+  { name: "Londres", flag: "🇬🇧", image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800", desc: "Pubs con historia, compras en Camden y el Big Ben. ¡Un clásico que nunca falla!" },
+  { name: "Dublín", flag: "🇮🇪", image: "https://images.unsplash.com/photo-1540339832862-47452993c66e?auto=format&fit=crop&w=800", desc: "Cerveza negra en Temple Bar, música en vivo y la amabilidad irlandesa." },
+  { name: "Roma", flag: "🇮🇹", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800", desc: "Pasta, vino y mucha historia. La ciudad eterna nos espera con sus plazas." },
+  { name: "Venecia", flag: "🇮🇹", image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?auto=format&fit=crop&w=800", desc: "Canales mágicos y paseos en góndola. Septiembre es el mes perfecto por el clima." },
+  { name: "Ámsterdam", flag: "🇳🇱", image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=800", desc: "Paseos en bici, canales románticos y una atmósfera única en el mundo." },
+  { name: "Budapest", flag: "🇭🇺", image: "https://images.unsplash.com/photo-1551867633-194f125bddfa?auto=format&fit=crop&w=800", desc: "Termas relajantes, el Parlamento iluminado y los mejores 'ruin pubs'." },
+  { name: "Viena", flag: "🇦🇹", image: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800", desc: "Elegancia imperial, cafés históricos y mucha tarta Sacher." },
+  // 5 Ciudades baratas en septiembre
+  { name: "Varsovia", flag: "🇵🇱", image: "https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&w=800", desc: "Moderna, barata y con un casco antiguo precioso. ¡Sorpresa garantizada!" },
+  { name: "Praga", flag: "🇨🇿", image: "https://images.unsplash.com/photo-1513807016779-d51c0c026263?auto=format&fit=crop&w=800", desc: "La ciudad de las cien torres. Cerveza excelente y precios muy económicos." },
+  { name: "Oporto", flag: "🇵🇹", image: "https://images
